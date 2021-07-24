@@ -4,7 +4,7 @@
 
 Klayout is a free **GDS** and OASIS file editor.
 
-This document is an tutorial for **beginners**. Check the documentation at Klayout homepage for more details (https://www.klayout.de/).
+This document is an tutorial for **beginners**. Check the documentation at Klayout homepage for more details (https://www.klayout.de/). It was done with Klayout on Windows. Hopefully, it should not be much different on other systems.
 
 Here I show how to create GDS files with the **GUI** (Graphical User Interface). It's also possible to do it using python or ruby macro. This will be the subject of another tutorial (under construction).
 
@@ -400,4 +400,38 @@ In this paragraph, we are going to write some text by different methods.
 * This text is treated as part of the design, and will appear on your device. However the font includes some slanted lines. Sometimes you don't want this. In particular the F5112 electron beam machine cannot be used in the fast "On the fly" mode if there are slanted lines. So it would be great if the text was done only with rectangular shapes. This is possible! You can use your own text and how to do this is explained in the next paragraph.
 
 ### Writing text with your own font
+
+You can create your own font. The standard font file used to be in the klayout\font folder, but I can't find it anymore. I have the file so I will share in my GitHub folder. The name is sdt_font.gds. There is also my own font folder using only rectangles: eric_font.gds.
+
+Once you have created your font on the same model as the previous file, put your file in the folder C:\Users\username\KLayout\fonts\ (replace username with your Windows username).
+
+Then you can chose your own font in the PCell tab:
+
+![image-20210724174407517](klayout-tutorial-images/image-20210724174407517.png)
+
+## The fill tool
+
+Actually I don't use much this tool, but I think it's fun so I will present it rapidly here.
+
+* Create a new layer named fill.
+
+* Draw an arbitrary shape in this cell, with layer 255. The size should be in the order of 100um. You can change the stipple in the Layer Toolbox field. I made it with no stipples:
+
+  ![image-20210724224531327](klayout-tutorial-images/image-20210724224531327.png)
+
+* Edit → Utility → Fill Tool
+
+  * In Fill Area tab: Shapes on layer... → 255/0
+  * In Exclude Areas tab: No exclude
+  * In Fill Cell tab: 
+    * Fill Cell → circle_0.5um
+    * Step vectors: Row: 1, 0 and Column 0.5, 0.866
+
+* Click OK
+
+* Your shape is now filled with circles and organized in an hexagonal array:
+
+  ![image-20210724225005755](klayout-tutorial-images/image-20210724225005755.png)
+
+  
 
